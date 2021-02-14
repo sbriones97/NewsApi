@@ -17,3 +17,5 @@ gulp.task('scripts', function() {
         .pipe(tsConfig())
         .pipe(gulp.dest('dist/assets/scripts'))
 })
+
+gulp.task('default', gulp.parallel(['styles', 'html', 'scripts']))
