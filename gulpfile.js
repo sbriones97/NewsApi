@@ -3,7 +3,7 @@ let sass = require('gulp-sass')
 let typescript = require('gulp-typescript')
 
 gulp.task('html', function() {
-    return gulp.src('src/index.html')
+    return gulp.src('views/index.html')
         .pipe(gulp.dest('dist'))
 })
 gulp.task('styles', function() {
