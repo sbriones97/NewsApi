@@ -2,10 +2,12 @@ const fetch = require("node-fetch")
 const { User } = require('./../models')
 
 class UsersController{
-    async insert (res, req) {
+    async insert (res, data, file) {
         console.log('A Insertar')
-        console.log(req.body)
-        let json_body = req.body
+        console.log(file)
+        console.log(data)
+        let json_body = data
+        json_body.img = file
     
         User.insertOne(json_body, (err, result) => {
             if (err) {

@@ -30,7 +30,8 @@ router.get('/', (req, res) => {
 router.post('/', uploadFile.single('img'), (req, res) => {
     console.log('posteando ando')
     console.log(req.body)
-    UsersController.insert(res, req)
+    console.log(req.file.originalname)
+    UsersController.insert(res, req.body, req.file.originalname)
 })
 
 router.get('/:id', (req, res) => {

@@ -1,4 +1,5 @@
 const express = require('express')
+const fs = require('fs')
 
 const { newsRoutes, usersRoutes } = require('./routes') 
 const { User } = require('./src/models') 
@@ -18,18 +19,19 @@ app.use((req, res, next) => {
 });
 
 app.use('/', authMiddleware)
+app.use('/assets', express.static('./dist/assets'))
 
 app.use('/news', newsRoutes)
 app.use('/users', usersRoutes)
 
 app.get('/', (req, res) => {
-    let indexHtml = fs.readFileSync("./views/index.html")
+    let indexFile = fs.readFileSync("./views/index.html")
     res.end(indexFile)
 })
 
 app.get('/registry', (req, res) => {
-    let indexHtml = fs.readFileSync("./views/registry.html")
-    res.end(indexFile)
+    let registryHtml = fs.readFileSync("./views/registry.html")
+    res.end(registryHtml)
 })
 
 app.listen(port, () => {
