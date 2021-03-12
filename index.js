@@ -1,4 +1,5 @@
 const express = require('express')
+
 const { newsRoutes, usersRoutes } = require('./routes') 
 const { User } = require('./src/models') 
 const authMiddleware = require('./src/middlewares/auth')
@@ -22,8 +23,13 @@ app.use('/news', newsRoutes)
 app.use('/users', usersRoutes)
 
 app.get('/', (req, res) => {
-    let indexHtml = fs.readFileSync("./views/index.html");
-    res.end(indexFile);
+    let indexHtml = fs.readFileSync("./views/index.html")
+    res.end(indexFile)
+})
+
+app.get('/registry', (req, res) => {
+    let indexHtml = fs.readFileSync("./views/registry.html")
+    res.end(indexFile)
 })
 
 app.listen(port, () => {
