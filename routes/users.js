@@ -27,6 +27,10 @@ router.get('/', (req, res) => {
     User.findOne()
 })
 
+router.post('/google', (req, res) => {
+    UsersController.googleLogin(req, res)
+})
+
 router.post('/', uploadFile.single('img'), (req, res) => {
     console.log('posteando ando')
     console.log(req.body)

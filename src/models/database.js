@@ -28,12 +28,20 @@ class Database {
         })  
     }
 
-    findOne (filters) {
-        const collection = db.collection(this.collectionName)
+    async findOne (filters, cb) {
+        return db.collection(this.collectionName).findOne(filters, cb)
     }
 
-    insertOne (obj, cb) {
+    async insertOne (obj, cb) {
         return db.collection(this.collectionName).insertOne(obj, cb)
+    }
+
+    async updateOne (filters, updates, cb) {
+        return db.collection(this.collectionName).updateOne(filters, updates, cb)
+    }
+
+    async findByToken (token, cb) {
+        return db.collection(this.collectionName).findOne({token: token}, cb)
     }
 }
 
